@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5.1%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 10.2%;
+    --card-foreground: 0 0% 100%;
+    --card-hover: 0 0% 13%;
+
+    --popover: 0 0% 10.2%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 271 81% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 83%;
+
+    --accent: 0 0% 16%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 16.5%;
+    --input: 0 0% 16.5%;
+    --ring: 271 81% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 6.7%;
+    --sidebar-foreground: 0 0% 80%;
+    --sidebar-primary: 271 81% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 271 81% 56%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 90%;
+    --success: 142 71% 45%;
+    --success-foreground: 142 71% 90%;
+    --info: 217 91% 60%;
+    --info-foreground: 217 91% 90%;
+
+    --label: 0 0% 91%;
+  }
+
+  .light {
+    --background: 0 0% 96%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --card-hover: 0 0% 97%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 271 70% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 35%;
+
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 271 70% 42%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 35%;
+    --sidebar-primary: 271 70% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 271 70% 42%;
+
+    --warning: 38 92% 45%;
+    --warning-foreground: 38 92% 15%;
+    --success: 142 71% 35%;
+    --success-foreground: 142 71% 15%;
+    --info: 217 91% 50%;
+    --info-foreground: 217 91% 15%;
+
+    --label: 0 0% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Card hover glow */
+.card-glow {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-glow:hover {
+  border-color: hsl(271 81% 56% / 0.4);
+  box-shadow: 0 0 20px hsl(271 81% 56% / 0.1), 0 0 0 1px hsl(271 81% 56% / 0.2);
+}
+
+/* Lime active sidebar border */
+.nav-active {
+  border-left: 3px solid hsl(271 81% 56%);
+  background: hsl(271 81% 56% / 0.08);
+  color: hsl(271 81% 56%);
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Staggered children */
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 400ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 500ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 600ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 700ms; }
+
+/* Pulse glow for live indicators */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 4px hsl(271 81% 56% / 0.4); }
+  50% { box-shadow: 0 0 12px hsl(271 81% 56% / 0.8); }
+}
+.pulse-glow {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Status dot pulse */
+@keyframes statusPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+.status-dot-pulse {
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Page transition fade */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page-fade-in {
+  animation: pageFadeIn 0.4s ease-out;
+}
+
+/* Section header with lime left border */
+.section-header {
+  border-left: 4px solid hsl(271 81% 56%);
+  padding-left: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: hsl(0 0% 100%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Recharts overrides */
+.recharts-cartesian-grid line {
+  stroke: hsl(0 0% 16%) !important;
+}
+.recharts-text {
+  fill: hsl(0 0% 75%) !important;
+  font-size: 11px !important;
+}
+
+/* Print styles */
+@media print {
+  body { background: white !important; color: black !important; }
+  .no-print, aside, nav, header, .pulse-glow, [data-sidebar] { display: none !important; }
+  .ml-\[240px\] { margin-left: 0 !important; }
+  main { margin: 0 !important; padding: 1rem !important; }
+  .bg-card, .bg-background { background: white !important; border-color: #ddd !important; }
+  .text-foreground, .text-card-foreground { color: #111 !important; }
+  .text-muted-foreground { color: #666 !important; }
+  .text-primary { color: #7C3AED !important; }
+  .card-glow { box-shadow: none !important; }
+  .border-border { border-color: #ddd !important; }
+  .bg-secondary, .bg-secondary\/30 { background: #f5f5f5 !important; }
+  * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .print-logo { display: flex !important; justify-content: center; margin-bottom: 1rem; }
+  .print-logo img { height: 40px; filter: brightness(0.3); }
+}
+
+.light img[alt="MW Growth Systems"] {
+  filter: brightness(0.3);
+}
+
+:root {
+  --accent-teal: 173 80% 40%;
+}
+
+/* Radar sweep animation */
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.radar-sweep {
+  animation: radarSweep 4s linear infinite;
+  transform-origin: center center;
+}
+
+/* Threat glow effects */
+.threat-glow-critical { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.threat-glow-critical:hover { border-color: #EF4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.15); }
+.threat-glow-high { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.threat-glow-high:hover { border-color: #F97316; box-shadow: 0 0 20px rgba(249, 115, 22, 0.15); }
+.threat-glow-medium { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.threat-glow-medium:hover { border-color: #EAB308; box-shadow: 0 0 20px rgba(234, 179, 8, 0.15); }
+.threat-glow-low { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.threat-glow-low:hover { border-color: #22C55E; box-shadow: 0 0 20px rgba(34, 197, 94, 0.15); }
+
+/* Intel border colors by type */
+.intel-border-ad_spend { border-left-color: hsl(271 81% 56%); }
+.intel-border-social_followers { border-left-color: #3B82F6; }
+.intel-border-social_engagement { border-left-color: #22C55E; }
+.intel-border-new_campaign { border-left-color: #F97316; }
+.intel-border-pricing_change { border-left-color: #EF4444; }
+.intel-border-news { border-left-color: #6B7280; }
+.intel-border-new_product { border-left-color: #06B6D4; }
+.intel-border-hiring { border-left-color: #F59E0B; }
+.intel-border-review_score { border-left-color: #EAB308; }
+.intel-border-website_traffic { border-left-color: #6366F1; }
+.intel-border-seo_ranking { border-left-color: #14B8A6; }
+.intel-border-content_published { border-left-color: #60A5FA; }
+.intel-border-custom { border-left-color: hsl(var(--muted-foreground)); }
+
+/* Glassmorphism card */
+.glass-card {
+  background: hsl(var(--card) / 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Section glow */
+.section-glow {
+  box-shadow: 0 0 60px hsl(271 81% 56% / 0.05);
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.loading-shimmer {
+  background: linear-gradient(90deg, transparent 0%, hsl(271 81% 56% / 0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}

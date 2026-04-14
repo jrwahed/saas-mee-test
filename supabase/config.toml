@@ -1,0 +1,16 @@
+project_id = "ssptetzudpcajecncwrp"
+
+[functions.generate-report]
+verify_jwt = false
+
+[functions.calculator-ai]
+verify_jwt = false
+
+[functions.task-ai-analyze]
+verify_jwt = false
+
+[functions.competitor-ai-analyze]
+verify_jwt = false
+
+[functions.competitor-search]
+verify_jwt = false
