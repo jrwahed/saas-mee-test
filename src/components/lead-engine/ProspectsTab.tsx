@@ -75,20 +75,30 @@ export function ProspectsTab({ onSelectProspect, onAnalyzeProspect }: ProspectsT
 
       const result = data.result || data;
       
+      // Parse AI response if wrapped in raw property or markdown
+      let finalResult = result;
+      if (result?.raw) {
+        try {
+          finalResult = JSON.parse(result.raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim());
+        } catch {
+          finalResult = result;
+        }
+      }
+      
       // Update prospect with AI score
       await updateProspect.mutateAsync({
         id: prospect.id,
-        updates: { ai_priority_score: result.ai_priority_score },
+        updates: { ai_priority_score: finalResult.ai_priority_score },
       });
 
       // Create research record
       await supabase.from("prospect_research").insert({
         prospect_id: prospect.id,
         org_id: prospect.org_id,
-        company_summary: result.company_summary,
-        marketing_behavior: result.marketing_behavior,
-        opportunity_insight: result.opportunity_insight,
-        suggested_event_idea: result.suggested_event_idea,
+        company_summary: finalResult.company_summary,
+        marketing_behavior: finalResult.marketing_behavior,
+        opportunity_insight: finalResult.opportunity_insight,
+        suggested_event_idea: finalResult.suggested_event_idea,
         ai_generated: true,
       });
 

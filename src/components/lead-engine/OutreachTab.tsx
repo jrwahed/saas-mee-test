@@ -65,11 +65,22 @@ export function OutreachTab() {
       if (error) throw error;
 
       const result = data.result || data;
+
+      // Parse AI response if wrapped in raw property or markdown
+      let finalResult = result;
+      if (result?.raw) {
+        try {
+          finalResult = JSON.parse(result.raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim());
+        } catch {
+          finalResult = result;
+        }
+      }
+
       setMessageDraft({
-        observation: result.observation,
-        opportunity: result.opportunity,
-        idea: result.idea,
-        call_to_action: result.call_to_action,
+        observation: finalResult.observation,
+        opportunity: finalResult.opportunity,
+        idea: finalResult.idea,
+        call_to_action: finalResult.call_to_action,
       });
 
       toast.success("تم توليد الرسالة بنجاح");

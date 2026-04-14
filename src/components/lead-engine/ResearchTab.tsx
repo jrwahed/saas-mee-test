@@ -64,8 +64,18 @@ export function ResearchTab({ onSelectProspect }: ResearchTabProps) {
 
       const result = data.result || data;
 
+      // Parse AI response if wrapped in raw property or markdown
+      let finalResult = result;
+      if (result?.raw) {
+        try {
+          finalResult = JSON.parse(result.raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim());
+        } catch {
+          finalResult = result;
+        }
+      }
+
       await supabase.from("prospects").update({
-        ai_priority_score: result.ai_priority_score,
+        ai_priority_score: finalResult.ai_priority_score,
         status: "researched",
         updated_at: new Date().toISOString(),
       }).eq("id", prospectId);
@@ -73,16 +83,16 @@ export function ResearchTab({ onSelectProspect }: ResearchTabProps) {
       await supabase.from("prospect_research").insert({
         prospect_id: prospectId,
         org_id: orgId!,
-        company_summary: result.company_summary,
-        marketing_behavior: result.marketing_behavior,
-        opportunity_insight: result.opportunity_insight,
-        suggested_event_idea: result.suggested_event_idea,
+        company_summary: finalResult.company_summary,
+        marketing_behavior: finalResult.marketing_behavior,
+        opportunity_insight: finalResult.opportunity_insight,
+        suggested_event_idea: finalResult.suggested_event_idea,
         ai_generated: true,
       });
 
       // Add suggested decision makers
-      if (result.decision_maker_titles && Array.isArray(result.decision_maker_titles)) {
-        for (const title of result.decision_maker_titles.slice(0, 3)) {
+      if (finalResult.decision_maker_titles && Array.isArray(finalResult.decision_maker_titles)) {
+        for (const title of finalResult.decision_maker_titles.slice(0, 3)) {
           await supabase.from("decision_makers").insert({
             prospect_id: prospectId,
             org_id: orgId!,
