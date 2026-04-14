@@ -6,7 +6,7 @@ import {
   Brain, Loader2,
 } from "lucide-react";
 import mwLogo from "@/assets/mw-logo.svg";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 
 /* ────────────────────────────────── constants ────────────────────────────────── */
 const ACCENT = "#C8FF00";

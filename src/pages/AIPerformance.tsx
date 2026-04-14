@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { DashboardLayout } from "@/components/DashboardLayout";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useCampaignsData, useLeadsData } from "@/hooks/useDashboardData";
 import { Card } from "@/components/ui/card";

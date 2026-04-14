@@ -16,6 +16,7 @@ import SalesPipeline from "./pages/SalesPipeline";
 import Reports from "./pages/Reports";
 import Tasks from "./pages/Tasks";
 import Competitors from "./pages/Competitors";
+import LeadEngine from "./pages/LeadEngine";
 import Login from "./pages/Login";
 import Calculator from "./pages/Calculator";
 import UserManagement from "./pages/UserManagement";
@@ -55,6 +56,7 @@ const App = () => (
               <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
               <Route path="/tasks" element={<ProtectedRoute><Tasks /></ProtectedRoute>} />
               <Route path="/competitors" element={<ProtectedRoute><Competitors /></ProtectedRoute>} />
+              <Route path="/lead-engine" element={<ProtectedRoute><LeadEngine /></ProtectedRoute>} />
               <Route path="/admin-onboard" element={<ProtectedRoute><AdminOnboard /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>

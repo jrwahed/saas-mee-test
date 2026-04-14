@@ -8,7 +8,7 @@ import { ErrorState } from "@/components/ErrorState";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { useCampaignsData, useLeadsData, useDashboardKPIs } from "@/hooks/useDashboardData";
 import { useRealtimeSubscription } from "@/hooks/useRealtimeSubscription";
 import { fmtNum, fmtCurrency } from "@/lib/formatters";

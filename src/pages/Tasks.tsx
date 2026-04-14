@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Plus, AlertTriangle, Brain, Loader2, Calendar, TrendingUp, Users } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTasksData, useTaskAssignmentRules, useDailySummaries } from "@/hooks/useTasksData";
 import { useRealtimeSubscription } from "@/hooks/useRealtimeSubscription";

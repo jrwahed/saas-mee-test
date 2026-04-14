@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Brain, Loader2 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useDailyLogs, useTasksData, useDailySummaries } from "@/hooks/useTasksData";
 import { useOrgMembers } from "@/hooks/useOrgMembers";

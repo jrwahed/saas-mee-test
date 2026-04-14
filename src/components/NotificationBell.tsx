@@ -5,7 +5,7 @@ import {
   Bell, UserPlus, ArrowRight, RefreshCw, AlertTriangle,
   CheckCircle, MessageCircle, Trophy, Check,
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { formatDistanceToNow } from "date-fns";
 import { ar } from "date-fns/locale";

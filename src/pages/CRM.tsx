@@ -5,7 +5,7 @@ import { useLeadsData } from "@/hooks/useDashboardData";
 import { useRealtimeSubscription } from "@/hooks/useRealtimeSubscription";
 import { useAuth } from "@/contexts/AuthContext";
 import { useOrgMembers } from "@/hooks/useOrgMembers";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { Users } from "lucide-react";
