@@ -62,7 +62,7 @@ export function ResearchTab({ onSelectProspect }: ResearchTabProps) {
 
       if (error) throw error;
 
-      const result = JSON.parse(data.report);
+      const result = data.result || data;
 
       await supabase.from("prospects").update({
         ai_priority_score: result.ai_priority_score,

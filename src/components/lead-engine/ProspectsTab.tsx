@@ -73,7 +73,7 @@ export function ProspectsTab({ onSelectProspect, onAnalyzeProspect }: ProspectsT
 
       if (error) throw error;
 
-      const result = JSON.parse(data.report);
+      const result = data.result || data;
       
       // Update prospect with AI score
       await updateProspect.mutateAsync({

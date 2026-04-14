@@ -64,7 +64,7 @@ export function OutreachTab() {
 
       if (error) throw error;
 
-      const result = JSON.parse(data.report);
+      const result = data.result || data;
       setMessageDraft({
         observation: result.observation,
         opportunity: result.opportunity,
