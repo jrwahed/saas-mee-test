@@ -15,6 +15,8 @@ export default function TaskCommandCenter() {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [weekStart, setWeekStart] = useState<Date>(startOfWeek(new Date(), { weekStartsOn: 0 }));
   
+  console.log("TASK PAGE LOADED - TaskCommandCenter rendering");
+  
   const {
     standups,
     weeklyGoals,
